@@ -1,4 +1,4 @@
-import {registerStyles,ThemableMixin} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import {registerStyles, ThemableMixin} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import {ElementMixin} from '@vaadin/component-base/src/element-mixin.js';
 import '@polymer/iron-icon';
 import '../utils/vaadin-disabled-property-mixin.js';

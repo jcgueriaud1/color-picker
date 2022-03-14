@@ -74,6 +74,7 @@ const colorValueTextField = css`
       :host([theme~="color-value-text-field"][theme~="small"][has-label]) {
         padding-top: var(--lumo-space-s);
       }
+
       :host([theme~="color-value-text-field"][has-label]) {
         padding-top: var(--lumo-space-m);
       }

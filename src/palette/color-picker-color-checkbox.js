@@ -34,19 +34,6 @@ class ColorCheckboxElement extends Checkbox {
       }
     };
   }
-/*
-  static get template() {
-    if (!memoizedTemplate) {
-      memoizedTemplate = super.template.cloneNode(true);
-
-      const div = document.createElement('div');
-      div.setAttribute('part', 'color-backdrop');
-
-      memoizedTemplate.content.querySelector('label').prepend(div);
-    }
-    return memoizedTemplate;
-  }
-*/
 
   /**
    * @protected
