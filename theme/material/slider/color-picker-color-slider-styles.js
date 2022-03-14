@@ -1,14 +1,11 @@
-import {html} from '@polymer/polymer';
+import {css, registerStyles} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
-const $_documentContainer = html`
-<dom-module id="material-color-picker-color-slider" theme-for="color-slider">
-  <template>
-    <style>
+const colorSlider = css`
       :host {
         --color-slider-size: calc(36px / 2);
         --color-slider-handle-size: var(--color-slider-size);
 
-        height: var(--color-slider-size); 
+        height: var(--color-slider-size);
         margin: calc(4px / 2) 0;
       }
 
@@ -120,18 +117,16 @@ const $_documentContainer = html`
       :host([disabled]) [part="background"] {
         border-color: var(--material-disabled-color);
       }
-    </style>
-  </template>
-</dom-module>
+`;
 
-<dom-module id="material-color-picker-sl-slider" theme-for="sl-slider">
-  <template>
-    <style>
+const slSlider = css`
       :host {
         height: calc(var(--color-slider-size) * 8);
       }
-    </style>
-  </template>
-</dom-module>
 `;
-document.head.appendChild($_documentContainer.content);
+
+
+registerStyles('sl-slider', slSlider, {moduleId: 'color-picker-sl-slider'});
+registerStyles('color-slider', colorSlider, {moduleId: 'material-color-picker-color-slider'});
+
+export {colorSlider, slSlider};

@@ -1,9 +1,6 @@
-const $_documentContainer = document.createElement('template');
+import {css, registerStyles} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
-$_documentContainer.innerHTML = `
-<dom-module id="color-picker-styles" theme-for="color-picker">
-  <template>
-    <style>
+const colorPickerStyles = css`
       :host {
         --color-picker-spacing: var(--lumo-space-m);
         --color-picker-alpha-checkerboard-foreground-color: var(--lumo-contrast-20pct);
@@ -25,18 +22,9 @@ $_documentContainer.innerHTML = `
 
         width: calc(var(--lumo-size-s) * 9 + var(--color-picker-spacing) * 8);
       }
-    </style>
-  </template>
-</dom-module>
 `;
-document.head.appendChild($_documentContainer.content);
 
-const $_documentContainer2 = document.createElement('template');
-
-$_documentContainer2.innerHTML = `
-<dom-module id="color-picker-shared-styles">
-  <template>
-    <style>
+const colorPickerSharedStyles = css`
       .horizontal-spacing,
       .vertical-spacing {
         align-items: center;
@@ -66,32 +54,38 @@ $_documentContainer2.innerHTML = `
       .vertical-spacing > :not(style) {
         margin-bottom: var(--color-picker-spacing);
       }
-    </style>
-  </template>
-</dom-module>
 `;
-document.head.appendChild($_documentContainer2.content);
 
-const $_documentContainer3 = document.createElement('template');
 
-$_documentContainer3.innerHTML = `
-<dom-module id="color-value-text-field" theme-for="vaadin-text-field">
-  <template>
-    <style>
+const colorValueTextField = css`
       :host([theme~="color-value-text-field"]),
-      :host([theme~="color-value-text-field"]) .vaadin-text-field-container {
+      :host([theme~="color-value-text-field"]) .vaadin-text-field-container,
+      :host([theme~="color-value-text-field"]) .vaadin-field-container {
         width: auto;
       }
 
       :host([theme~="color-value-text-field"]) [part="label"] {
         align-self: center;
+          color: var(--lumo-secondary-text-color);
+          font-weight: 500;
+          font-size: var(--lumo-font-size-s);
       }
 
       :host([theme~="color-value-text-field"][theme~="small"][has-label]) {
         padding-top: var(--lumo-space-s);
       }
-    </style>
-  </template>
-</dom-module>
+      :host([theme~="color-value-text-field"][has-label]) {
+        padding-top: var(--lumo-space-m);
+      }
+
+      :host([theme~="color-value-text-field"]) {
+        padding: var(--lumo-space-xs) 0;
+      }
 `;
-document.head.appendChild($_documentContainer3.content);
+
+
+registerStyles('color-picker', colorPickerStyles, {moduleId: 'color-picker-styles'});
+registerStyles('vaadin-text-field', colorValueTextField, {moduleId: 'color-value-text-field'});
+registerStyles('vaadin-number-field', colorValueTextField, {moduleId: 'color-value-number-field'});
+
+export {colorPickerStyles, colorPickerSharedStyles, colorValueTextField};

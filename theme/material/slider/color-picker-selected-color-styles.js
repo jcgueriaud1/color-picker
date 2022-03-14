@@ -1,10 +1,6 @@
-import "@vaadin/vaadin-icons/vaadin-icons.js";
-import {html} from '@polymer/polymer';
+import {css, registerStyles} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
-const $_documentContainer = html`
-<dom-module id="material-color-picker-selected-color" theme-for="selected-color sl-slider">
-  <template>
-    <style>
+const selectedColor = css`
       :host {
         --color-picker-selected-color-box-shadow: var(--material-shadow-elevation-2dp);
 
@@ -84,8 +80,9 @@ const $_documentContainer = html`
         transform: scale(2.5);
         opacity: 0.15;
       }
-    </style>
-  </template>
-</dom-module>
   `;
-document.head.appendChild($_documentContainer.content);
+
+registerStyles('selected-color', selectedColor, {moduleId: 'material-color-picker-selected-color'});
+registerStyles('sl-slider', selectedColor, {moduleId: 'material-color-picker-selected-color'});
+
+export {selectedColor};

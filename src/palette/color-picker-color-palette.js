@@ -1,11 +1,14 @@
 import {html, PolymerElement} from '@polymer/polymer';
-import {ThemableMixin} from '@vaadin/vaadin-themable-mixin';
-import {ElementMixin} from '@vaadin/vaadin-element-mixin';
+import {registerStyles, ThemableMixin} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import {ElementMixin} from '@vaadin/component-base/src/element-mixin.js';
 import '../utils/vaadin-disabled-property-mixin.js';
 import '../utils/color-picker-has-color-value-mixin.js';
 import './color-picker-color-checkbox.js';
 import {tinycolor} from '@thebespokepixel/es-tinycolor';
 
+import {colorPickerSharedStyles} from '../../theme/lumo/color-picker-styles.js';
+
+registerStyles('color-palette', colorPickerSharedStyles, {moduleId: 'color-picker-shared-styles'});
 /**
  * `<color-palette>` shows a set of colors that can be selected.
  *
@@ -18,7 +21,7 @@ import {tinycolor} from '@thebespokepixel/es-tinycolor';
 class ColorPaletteElement extends ElementMixin(ThemableMixin(Vaadin.DisabledPropertyMixin(Vaadin.ColorPicker.HasColorValueMixin(PolymerElement)))) {
   static get template() {
     return html`
-    <style include="color-picker-shared-styles">
+    <style>
       :host {
         width: 100%;
       }
@@ -53,7 +56,7 @@ class ColorPaletteElement extends ElementMixin(ThemableMixin(Vaadin.DisabledProp
   }
 
   static get version() {
-    return '2.0.0-beta.4';
+    return '3.0.0-beta.1';
   }
 
   static get properties() {

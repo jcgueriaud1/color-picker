@@ -1,9 +1,6 @@
-const $_documentContainer = document.createElement('template');
+import {css, registerStyles} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
-$_documentContainer.innerHTML = `
-<dom-module id="color-checkbox-styles" theme-for="color-checkbox">
-  <template>
-    <style>
+const colorCheckbox = css`
       :host([checked]) {
         pointer-events: none;
       }
@@ -33,8 +30,9 @@ $_documentContainer.innerHTML = `
       }
 
       :host([checked]) [part="checkbox"]::after {
-        width: 1.25em;
-        height: 2.125em;
+        font-size: 2em;
+        top: 0;
+        left: 0;
       }
 
       label {
@@ -84,8 +82,9 @@ $_documentContainer.innerHTML = `
         width: 0.9375em;
         height: 1.59375em;
       }
-    </style>
-  </template>
-</dom-module>
 `;
-document.head.appendChild($_documentContainer.content);
+
+
+registerStyles('color-checkbox', colorCheckbox, {moduleId: 'color-checkbox-styles'});
+
+export {colorCheckbox};

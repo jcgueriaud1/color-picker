@@ -1,12 +1,15 @@
-import {ThemableMixin} from '@vaadin/vaadin-themable-mixin';
-import {ElementMixin} from '@vaadin/vaadin-element-mixin';
-import '@vaadin/vaadin-text-field/vaadin-number-field.js';
+import {registerStyles, ThemableMixin} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import {ElementMixin} from '@vaadin/component-base/src/element-mixin.js';
+import '@vaadin/number-field/src/vaadin-number-field.js';
 import './color-picker-color-input.js';
 import {tinycolor} from '@thebespokepixel/es-tinycolor';
 import '../utils/color-picker-utils.js';
 import {html} from '@polymer/polymer';
 import ColorPickerUtils from '../utils/color-picker-utils';
 
+import {colorPickerSharedStyles} from '../../theme/lumo/color-picker-styles.js';
+
+registerStyles('hsla-input', colorPickerSharedStyles, {moduleId: 'color-picker-shared-styles'});
 /**
  * `<hsla-input>` is an element that allows to input **hsla** color codes.
  *
@@ -16,7 +19,7 @@ class HslaInputElement extends ElementMixin(ThemableMixin(Vaadin.ColorPicker.Col
 
   static get template() {
     return html`
-    <style include="color-picker-shared-styles">
+    <style>
     </style>
 
     <div class="horizontal-spacing">
@@ -61,7 +64,7 @@ class HslaInputElement extends ElementMixin(ThemableMixin(Vaadin.ColorPicker.Col
   }
 
   static get version() {
-    return '2.0.0-beta.4';
+    return '3.0.0-beta.1';
   }
 
   static get properties() {

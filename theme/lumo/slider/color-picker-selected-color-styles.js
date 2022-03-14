@@ -1,9 +1,6 @@
-const $_documentContainer = document.createElement('template');
+import {css, registerStyles} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
-$_documentContainer.innerHTML = `
-<dom-module id="color-picker-selected-color-styles" theme-for="selected-color">
-  <template>
-    <style>
+const selectedColor = css`
       :host {
         --color-picker-selected-color-box-shadow: var(--lumo-box-shadow-s);
 
@@ -81,9 +78,7 @@ $_documentContainer.innerHTML = `
         transform: scale(0);
         opacity: 0.4;
       }
-    </style>
-  </template>
-</dom-module>
 `;
+registerStyles('selected-color', selectedColor, {moduleId: 'color-picker-selected-color-styles'});
 
-document.head.appendChild($_documentContainer.content);
+export {selectedColor};

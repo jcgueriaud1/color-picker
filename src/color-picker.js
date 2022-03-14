@@ -1,12 +1,14 @@
 import {html, PolymerElement} from '@polymer/polymer';
-import {ThemableMixin} from '@vaadin/vaadin-themable-mixin';
-import {ElementMixin} from '@vaadin/vaadin-element-mixin';
+import {registerStyles, ThemableMixin} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import {ElementMixin} from '@vaadin/component-base/src/element-mixin.js';
 import './slider/color-picker-color-picker-slider.js';
 import './input/color-picker-color-picker-input.js';
 import './palette/color-picker-color-picker-palette.js';
 import './utils/vaadin-disabled-property-mixin.js';
 import ColorPickerUtils from './utils/color-picker-utils';
+import {colorPickerSharedStyles} from '../theme/lumo/color-picker-styles.js';
 
+registerStyles('color-picker', colorPickerSharedStyles, {moduleId: 'color-picker-shared-styles'});
 /**
  * `<color-picker>` allows to select a color using sliders, inputs or palettes.
  *
@@ -24,7 +26,7 @@ class ColorPicker extends ElementMixin(ThemableMixin(PolymerElement)) {
 
   static get template() {
     return html`
-    <style include="color-picker-shared-styles color-picker-styles">
+    <style>
       :host {
         display: block;
         max-width: 100%;
@@ -75,7 +77,7 @@ class ColorPicker extends ElementMixin(ThemableMixin(PolymerElement)) {
   }
 
   static get version() {
-    return '2.0.0-beta.4';
+    return '3.0.0-beta.1';
   }
 
   static get properties() {

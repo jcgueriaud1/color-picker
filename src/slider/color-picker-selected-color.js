@@ -1,5 +1,5 @@
-import {ThemableMixin} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-import {ElementMixin} from '@vaadin/vaadin-element-mixin/vaadin-element-mixin.js';
+import {registerStyles,ThemableMixin} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import {ElementMixin} from '@vaadin/component-base/src/element-mixin.js';
 import '@polymer/iron-icon';
 import '../utils/vaadin-disabled-property-mixin.js';
 import '../utils/color-picker-has-color-value-mixin.js';
@@ -8,6 +8,9 @@ import '../components/color-picker-responsive-canvas';
 import {tinycolor} from '@thebespokepixel/es-tinycolor';
 import {html, PolymerElement} from '@polymer/polymer';
 import ColorPickerUtils from '../utils/color-picker-utils';
+import {colorPickerSharedStyles} from '../../theme/lumo/color-picker-styles.js';
+
+registerStyles('selected-color', colorPickerSharedStyles, {moduleId: 'color-picker-shared-styles'});
 
 /**
  * `<selected-color>` shows a selected color. If a previous color is specified, this one will
@@ -21,7 +24,7 @@ import ColorPickerUtils from '../utils/color-picker-utils';
  */
 class SelectedColorElement extends ElementMixin(ThemableMixin(Vaadin.DisabledPropertyMixin(Vaadin.ColorPicker.HasColorValueMixin(PolymerElement)))) {
   static get template() {
-    return html`<style include="color-picker-shared-styles">
+    return html`<style>
       :host {
         position: relative;
       }
@@ -78,7 +81,7 @@ class SelectedColorElement extends ElementMixin(ThemableMixin(Vaadin.DisabledPro
   }
 
   static get version() {
-    return '2.0.0-beta.4';
+    return '3.0.0-beta.1';
   }
 
   static get properties() {

@@ -1,9 +1,6 @@
-const $_documentContainer = document.createElement('template');
+import {css, registerStyles} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
-$_documentContainer.innerHTML = `
-<dom-module id="color-picker-color-slider-styles" theme-for="color-slider">
-  <template>
-    <style>
+const colorSlider = css`
       :host {
         --color-slider-size: calc(var(--lumo-size-m) / 2);
         --color-slider-handle-size: var(--color-slider-size);
@@ -125,26 +122,16 @@ $_documentContainer.innerHTML = `
       :host([disabled]) [part="background"] {
         border-color: var(--lumo-contrast-5pct);
       }
-    </style>
-  </template>
-</dom-module>
 `;
 
-document.head.appendChild($_documentContainer.content);
-
-const $_documentContainer2 = document.createElement('template');
-
-$_documentContainer2.innerHTML = `
-<dom-module id="color-picker-sl-slider" theme-for="sl-slider">
-  <template>
-  <style>
+const slSlider = css`
   :host {
     height: calc(var(--color-slider-size) * 8);
     width: 100%;
   }
-</style>
-</template>
-</dom-module>
 `;
 
-document.head.appendChild($_documentContainer2.content);
+registerStyles('sl-slider', slSlider, {moduleId: 'color-picker-sl-slider'});
+registerStyles('color-slider', colorSlider, {moduleId: 'color-picker-color-slider-styles'});
+
+export {colorSlider, slSlider};

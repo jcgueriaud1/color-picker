@@ -1,21 +1,18 @@
-import "../../../vaadin-material-styles/color.js";
-import "../../../vaadin-material-styles/shadow.js";
-import "../../../vaadin-material-styles/typography.js";
-import "./input/color-picker-hex-input-styles.js";
-import "./input/color-picker-hsla-input-styles.js";
-import "./input/color-picker-rgba-input-styles.js";
-import "./palette/color-picker-color-checkbox-styles.js";
-import "./slider/color-picker-color-slider-styles.js";
-import "./slider/color-picker-selected-color-styles.js";
-// TODO empty? import "./components/color-picker-element-carousel-styles.js";
-import "./components/color-picker-responsive-canvas-styles.js";
+import '../../../vaadin-material-styles/color.js';
+import '../../../vaadin-material-styles/shadow.js';
+import '../../../vaadin-material-styles/typography.js';
+import './input/color-picker-hex-input-styles.js';
+import './input/color-picker-hsla-input-styles.js';
+import './input/color-picker-rgba-input-styles.js';
+import './palette/color-picker-color-checkbox-styles.js';
+import './slider/color-picker-color-slider-styles.js';
+import './slider/color-picker-selected-color-styles.js';
+// TODO empty? import './components/color-picker-element-carousel-styles.js';
+import './components/color-picker-responsive-canvas-styles.js';
+import {css, registerStyles} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
-import {html} from '@polymer/polymer';
 
-const $_documentContainer = html`
-<dom-module id="material-color-picker" theme-for="color-picker">
-  <template>
-    <style>
+const colorPickerStyles = css`
       :host {
         --color-picker-spacing: 16px;
         --color-picker-alpha-checkerboard-foreground-color: var(--material-disabled-color);
@@ -31,13 +28,9 @@ const $_documentContainer = html`
 
         width: calc(36px * 9 + var(--color-picker-spacing) * 8);
       }
-    </style>
-  </template>
-</dom-module>
+`;
 
-<dom-module id="color-picker-shared-styles">
-  <template>
-    <style>
+const colorPickerSharedStyles = css`
       .horizontal-spacing,
       .vertical-spacing {
         align-items: center;
@@ -67,13 +60,10 @@ const $_documentContainer = html`
       .vertical-spacing > :not(style) {
         margin-bottom: var(--color-picker-spacing);
       }
-    </style>
-  </template>
-</dom-module>
+`;
 
-<dom-module id="color-value-text-field" theme-for="vaadin-text-field">
-  <template>
-    <style>
+
+const colorValueTextField = css`
       :host([theme~="color-value-text-field"]),
       :host([theme~="color-value-text-field"]) .vaadin-text-field-container {
         width: auto;
@@ -82,8 +72,10 @@ const $_documentContainer = html`
       :host([theme~="color-value-text-field"]) [part="label"] {
         align-self: center;
       }
-    </style>
-  </template>
-</dom-module>
 `;
-document.head.appendChild($_documentContainer.content);
+
+registerStyles('color-picker', colorPickerStyles, {moduleId: 'material-color-picker-styles'});
+registerStyles('vaadin-text-field', colorValueTextField, {moduleId: 'color-value-text-field'});
+registerStyles('vaadin-context-menu-overlay', colorPickerSharedStyles, {moduleId: 'color-picker-shared-styles'});
+
+export {colorPickerStyles, colorPickerSharedStyles, colorValueTextField};

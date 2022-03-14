@@ -1,5 +1,5 @@
 import {ThemableMixin} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-import {ElementMixin} from '@vaadin/vaadin-element-mixin/vaadin-element-mixin.js';
+import {ElementMixin} from '@vaadin/component-base/src/element-mixin.js';
 import './color-picker-color-slider.js';
 import {tinycolor} from '@thebespokepixel/es-tinycolor';
 
@@ -15,7 +15,7 @@ class AlphaSliderElement extends ElementMixin(ThemableMixin(Vaadin.ColorPicker.C
   }
 
   static get version() {
-    return '2.0.0-beta.4';
+    return '3.0.0-beta.1';
   }
 
   static get properties() {

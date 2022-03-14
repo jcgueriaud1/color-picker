@@ -1,5 +1,5 @@
 import {ThemableMixin} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-import {ElementMixin} from '@vaadin/vaadin-element-mixin/vaadin-element-mixin.js';
+import {ElementMixin} from '@vaadin/component-base/src/element-mixin.js';
 import './color-picker-color-slider.js';
 
 /**
@@ -14,7 +14,7 @@ class HueSliderElement extends ElementMixin(ThemableMixin(Vaadin.ColorPicker.Col
   }
 
   static get version() {
-    return '2.0.0-beta.4';
+    return '3.0.0-beta.1';
   }
 
   /**

@@ -1,9 +1,6 @@
-import {html} from '@polymer/polymer';
+import {css, registerStyles} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
-const $_documentContainer = html`
-<dom-module id="material-color-picker-responsive-canvas" theme-for="responsive-canvas">
-  <template>
-    <style>
+const responsiveCanvas = css`
       :host([disabled]),
       :host([readonly]) {
         pointer-events: none;
@@ -17,8 +14,8 @@ const $_documentContainer = html`
       :host([disabled]) {
         opacity: 0.3;
       }
-    </style>
-  </template>
-</dom-module>
 `;
-document.head.appendChild($_documentContainer.content);
+
+registerStyles('responsive-canvas', responsiveCanvas, {moduleId: 'color-picker-responsive-canvas-styles'});
+
+export {responsiveCanvas};

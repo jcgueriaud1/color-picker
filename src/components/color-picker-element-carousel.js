@@ -1,11 +1,15 @@
 import {html, PolymerElement} from '@polymer/polymer';
-import {ThemableMixin} from '@vaadin/vaadin-themable-mixin';
-import {ElementMixin} from '@vaadin/vaadin-element-mixin';
+import {registerStyles, ThemableMixin} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import {ElementMixin} from '@vaadin/component-base/src/element-mixin.js';
 import '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
-import '@vaadin/vaadin-button/src/vaadin-button.js';
+import '@vaadin/button/src/vaadin-button.js';
 import '../utils/vaadin-disabled-property-mixin.js';
 import {FlattenedNodesObserver} from '@polymer/polymer/lib/utils/flattened-nodes-observer';
 import ColorPickerUtils from '../utils/color-picker-utils';
+
+import {colorPickerSharedStyles} from '../../theme/lumo/color-picker-styles.js';
+
+registerStyles('element-carousel', colorPickerSharedStyles, {moduleId: 'color-picker-shared-styles'});
 
 /**
  * `<element-carousel>` allows to switch between elements and display one of them at a time.
@@ -43,7 +47,7 @@ class ElementCarouselElement extends ElementMixin(ThemableMixin(Vaadin.DisabledP
 
   static get template() {
     return html`
-    <style include="color-picker-shared-styles">
+    <style>
       [part="switch-button"] {
         flex-grow: 0 !important;
         align-self: var(--switch-button-alignment, flex-end);
@@ -72,7 +76,7 @@ class ElementCarouselElement extends ElementMixin(ThemableMixin(Vaadin.DisabledP
   }
 
   static get version() {
-    return '2.0.0-beta.4';
+    return '3.0.0-beta.1';
   }
 
   static get properties() {

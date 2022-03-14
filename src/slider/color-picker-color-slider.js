@@ -1,6 +1,6 @@
 import {ThemableMixin} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-import {ElementMixin} from '@vaadin/vaadin-element-mixin/vaadin-element-mixin.js';
-import {ControlStateMixin} from '@vaadin/vaadin-control-state-mixin';
+import {ElementMixin} from '@vaadin/component-base/src/element-mixin.js';
+import {FocusMixin} from '@vaadin/component-base/src/focus-mixin.js';
 import {mixinBehaviors} from '@polymer/polymer/lib/legacy/class.js';
 import '../components/color-picker-responsive-canvas.js';
 import '../utils/vaadin-disabled-property-mixin.js';
@@ -21,7 +21,7 @@ import ColorPickerUtils from '../utils/color-picker-utils';
  * @mixes Vaadin.DisabledPropertyMixin
  * @mixes Polymer.IronResizableBehavior
  */
-class ColorSliderElement extends ElementMixin(ControlStateMixin(ThemableMixin(mixinBehaviors([IronResizableBehavior], PolymerElement)))) {
+class ColorSliderElement extends ElementMixin(FocusMixin(ThemableMixin(mixinBehaviors([IronResizableBehavior], PolymerElement)))) {
   static get template() {
     return html`
     <style include="color-picker-color-slider-styles">
@@ -80,7 +80,7 @@ class ColorSliderElement extends ElementMixin(ControlStateMixin(ThemableMixin(mi
   }
 
   static get version() {
-    return '2.0.0-beta.4';
+    return '3.0.0-beta.1';
   }
 
   static get properties() {

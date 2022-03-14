@@ -1,6 +1,6 @@
 import {html, PolymerElement} from '@polymer/polymer';
-import {ThemableMixin} from '@vaadin/vaadin-themable-mixin';
-import {ElementMixin} from '@vaadin/vaadin-element-mixin';
+import {registerStyles, ThemableMixin} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import {ElementMixin} from '@vaadin/component-base/src/element-mixin.js';
 import {tinycolor} from '@thebespokepixel/es-tinycolor';
 import './color-picker-sl-slider.js';
 import './color-picker-hue-slider.js';
@@ -9,6 +9,9 @@ import './color-picker-selected-color.js';
 import '../utils/vaadin-disabled-property-mixin.js';
 import '../utils/color-picker-has-color-value-mixin.js';
 
+import {colorPickerSharedStyles} from '../../theme/lumo/color-picker-styles.js';
+
+registerStyles('color-picker-slider', colorPickerSharedStyles, {moduleId: 'color-picker-shared-styles'});
 /**
  * `<color-picker-slider>` allows to select a color from sliders.
  *
@@ -22,7 +25,7 @@ class ColorPickerSliderElement extends ElementMixin(ThemableMixin(Vaadin.Disable
 
   static get template() {
     return html`
-    <style include="color-picker-shared-styles">
+    <style>
       :host {
         display: flex;
       }
@@ -73,7 +76,7 @@ class ColorPickerSliderElement extends ElementMixin(ThemableMixin(Vaadin.Disable
   }
 
   static get version() {
-    return '2.0.0-beta.4';
+    return '3.0.0-beta.1';
   }
 
   static get properties() {

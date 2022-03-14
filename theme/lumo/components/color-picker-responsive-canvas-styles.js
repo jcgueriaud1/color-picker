@@ -1,12 +1,10 @@
-import '@vaadin/vaadin-button/src/vaadin-button.js';
+import '@vaadin/button/src/vaadin-button.js';
 import '@vaadin/button/theme/lumo/vaadin-button-styles.js';
 
-const $_documentContainer = document.createElement('template');
+import {css, registerStyles} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
-$_documentContainer.innerHTML = `
-<dom-module id="color-picker-responsive-canvas-styles" theme-for="responsive-canvas">
-  <template>
-    <style>
+
+const responsiveCanvas = css`
       :host([disabled]),
       :host([readonly]) {
         pointer-events: none;
@@ -19,9 +17,7 @@ $_documentContainer.innerHTML = `
 
       :host([disabled]) {
         opacity: 0.3;
-      }
-    </style>
-  </template>
-</dom-module>`;
+      }`;
+registerStyles('responsive-canvas', responsiveCanvas, {moduleId: 'color-picker-responsive-canvas-styles'});
 
-document.head.appendChild($_documentContainer.content);
+export {responsiveCanvas};

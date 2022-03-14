@@ -1,8 +1,6 @@
-import {CheckboxElement} from '@vaadin/vaadin-checkbox/src/vaadin-checkbox';
-import '@vaadin/vaadin-checkbox';
+import {Checkbox} from '@vaadin/checkbox/src/vaadin-checkbox.js';
+import '@vaadin/checkbox';
 import ColorPickerUtils from '../utils/color-picker-utils';
-
-let memoizedTemplate;
 
 /**
  * `<color-checkbox>` extends the `<vaadin-checkbox>` to be suitable for selecting colors.
@@ -14,14 +12,14 @@ let memoizedTemplate;
  * @mixes ThemableMixin
  * @mixes Vaadin.DisabledPropertyMixin
  */
-class ColorCheckboxElement extends CheckboxElement {
+class ColorCheckboxElement extends Checkbox {
 
   static get is() {
     return 'color-checkbox';
   }
 
   static get version() {
-    return '2.0.0-beta.4';
+    return '3.0.0-beta.1';
   }
 
   static get properties() {
@@ -36,7 +34,7 @@ class ColorCheckboxElement extends CheckboxElement {
       }
     };
   }
-
+/*
   static get template() {
     if (!memoizedTemplate) {
       memoizedTemplate = super.template.cloneNode(true);
@@ -48,6 +46,7 @@ class ColorCheckboxElement extends CheckboxElement {
     }
     return memoizedTemplate;
   }
+*/
 
   /**
    * @protected

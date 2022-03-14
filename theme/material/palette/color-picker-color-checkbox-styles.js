@@ -1,11 +1,7 @@
-import "@vaadin/vaadin-checkbox/theme/material/vaadin-checkbox.js";
+import '@vaadin/checkbox/theme/material/vaadin-checkbox.js';
+import {css, registerStyles} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
-import {html} from '@polymer/polymer';
-
-const $_documentContainer = html`
-<dom-module id="material-color-checkbox" theme-for="color-checkbox">
-  <template>
-    <style>
+const colorCheckbox = css`
       :host([checked]) {
         pointer-events: none;
       }
@@ -75,8 +71,9 @@ const $_documentContainer = html`
       :host([disabled]) [part="color-backdrop"] {
         opacity: 0.2;
       }
-    </style>
-  </template>
-</dom-module>
 `;
-document.head.appendChild($_documentContainer.content);
+
+
+registerStyles('color-checkbox', colorCheckbox, {moduleId: 'material-color-checkbox'});
+
+export {colorCheckbox};
